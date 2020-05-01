@@ -27,6 +27,7 @@ public class Client {
 		return this;
 	}
 	
+	//reads contents of the HTTP response
 	public String readContents() {
 		StringBuilder body = new StringBuilder();
 		Scanner in;
