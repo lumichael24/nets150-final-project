@@ -7,18 +7,21 @@ public class MasterApp {
 		get("/", (request, response) -> {
 			String query = request.queryParams("query");
 			StringBuilder sb = new StringBuilder();
-			sb.append("<div><form action=\"/render\" method=\"GET\">" + 
+			sb.append("<b align=\"center\">Welcome to Michael, Rishab, and Sam's Web Browser!</b><br><br>");
+			sb.append("<div align=\"center\"><form style=display: inline; action=\"/render\" method=\"GET\">" + 
 					"  <label for=\"fname\">Type the URL of the Website You Want to Visit:</label><br><br>" + 
 					"  <input style=\"height:50px;font-size:12pt;width:400px;\" type=\"text\" id=\"url\" name=\"url\" placeholder=\"e.g. https://www.espn.com\">" + 
 					"  <input type=\"submit\" value=\"Submit\" style=\"height:100px; width:100px\">" +
 					"</form>"
-					+ "<form action=\"/\" method=\"GET\">" + 
+					+ "<form style=display: inline; action=\"/\" method=\"GET\">" + 
 					"  <label for=\"fname\">Type the Topic that You Want to Learn About on Website:</label><br><br>" + 
 					"  <input style=\"height:50px;font-size:12pt;width:400px;\" type=\"text\" id=\"query\" name=\"query\" placeholder=\"e.g. Tom Brady\">" + 
 					"  <input type=\"submit\" value=\"Submit\" style=\"height:100px; width:100px\">" +
 					"</form></div>");
 			if (query == null || query.equals("") || prevPage.equals("")) return sb.toString();
 			
+			sb.append("<br><br><br>");
+			sb.append("<b align=\"center\"> <center> Displaying results of query: " + query + "</center></b><br>");
 			sb.append("<table style=\"width:50%\" align=\"center\">" + 
 					"  <tr>" + 
 					"    <th>Tokenized Query</th>" + 
@@ -50,6 +53,8 @@ public class MasterApp {
 				sb.append("</tr>");
 			}
 			sb.append("</table>");
+			sb.append("<br><br><br><br><br>");
+			sb.append("<a href=\"/display\">Back to Page!</a>");
 			return sb.toString();
 		});
 		
@@ -69,6 +74,14 @@ public class MasterApp {
 			}
 			response.redirect("/");
 			return null;
+		});
+		
+		get("/display", (request, response) -> {
+			if (prevPage == null || prevPage.equals("")) {
+				response.redirect("/");
+				return null;
+			}
+			return prevPage;
 		});
 	}
 }
