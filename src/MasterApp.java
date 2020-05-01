@@ -1,7 +1,5 @@
 import static spark.Spark.*;
 
-import org.tartarus.martin.Stemmer;
-
 public class MasterApp {
 	static String prevPage = "";
 	public static void main(String[] args) {
