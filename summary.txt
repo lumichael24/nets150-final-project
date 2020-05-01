@@ -1,0 +1,30 @@
+Project Name: Mock Web Browser
+Names: Michael Lu (lu20), Rishab Jaggi (rjaggi), Samuel Fleischer (fls)
+-----------------------------------------------------------------------------------------------
+User Manual:
+
+1. Begin a Maven Project in Eclipse or IntelliJ
+2. Inspect the 4 Classes: MasterApp.java, Client.java, Utilities.java, Stemmer.java
+3. Launch MasterApp.java with no arguments
+4. Go to a web browser and type in "http://localhost:8080"
+5. Follow the instructions on the Page!
+-----------------------------------------------------------------------------------------------
+Functionality:
+
+MasterApp.java: main master web app, launches the application on port 8080 on localhost
+Client.java: establishes http/https connection with desired URL inputted by user
+Utilities.java: contains the helper function used to count tokens in text
+Stemmer.java: imported package that uses the opennlp stemming algorithm to porterstem text
+
+This Java application is a mock browser that imitates the search functionality of a web browser such as Google Chrome or Safari. For example, a user can type in a url of a website they are interested in (e.g. www.espn.com), and our browser will display the contents of the www.espn.com home page (and all of its relative links on the home page). Then, a user can go back to the main web application page and type in a query that he or she wants to see. For example, after rendering the www.espn.com page, the user can type in the query "Tom Brady" in a different search form showed on the website, and our website will return some basic metadata about the website in relation to the query. The query is broken up into query tokens, delimited by a space. Specifically, our application returns the number of times each query token appears, the number of times each query token (case-insensitive) appears, the porter stemmed version of the query token, and the number of times the porter stemmed version of the query token appears on the website. Furthermore, we cache the web page's contents in a hyperlink at the bottom of the webpage, and when a user clicks on this hyperlink, the page's original contents is shown, with the caveat that all query tokens have been syntax highlighted. That is, all of the query tokens have been bolded on the page's cached contents, similarly to how "Command + F" would work on a Mac. 
+-----------------------------------------------------------------------------------------------
+Categories of Project:
+
+Our project consists of two main categories: Information Networks (World Wide Web) and Document Search (Information Retrieval). With Information Networks, we focused primarily upon establishing an HTTP/HTTPS connection with the server that the user wanted to visit. With Document Serach, we focused on porter stemming and tokenization of the query, which is similar to something a search engine like Google would do. Our search engine uses the OpenNLP porter stemming algorithm to trim words (e.g. running becomes run or swims becomes swim). Then, we search the document returned from the HTTP/HTTPS connection for the relevant information related to the query.
+-----------------------------------------------------------------------------------------------
+Work Breakdown:
+
+(mostly worked together on everything)
+Michael Lu: implemented backend Spark and handlers, content caching
+Rishab Jaggi: stemming algorithm + query tokenization
+Samuel Fleischer: content rendering, returning metadata
